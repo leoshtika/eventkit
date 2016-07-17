@@ -3,9 +3,6 @@
 # Update the list of available packages
 apt-get -y update
 
-# Install GIT
-# apt-get install -y git
-
 # Installing Apache
 apt-get install -y apache2
 
@@ -27,8 +24,10 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 apt-get -y install mysql-server libapache2-mod-auth-mysql
 
 # Installing PHP and it's dependencies
-apt-get -y install php5 libapache2-mod-php5 php5-mcrypt curl php5-curl php5-mysql
-apt-get -y install php5-intl
+apt-get -y install php5 libapache2-mod-php5 php5-mcrypt curl php5-curl php5-mysql php5-intl
+
+# Restart Apache
+service apache2 restart
 
 # Install Composer
 if [ ! -f /usr/local/bin/composer ]; then
@@ -36,9 +35,6 @@ if [ ! -f /usr/local/bin/composer ]; then
     mv composer.phar /usr/local/bin/composer
 fi
 
-# Install 'composer-asset-plugin'
-echo "Installing Composer Asset Plugin"
-composer global require "fxp/composer-asset-plugin:~1.1.1"
-
-# Restart Apache
-service apache2 restart
+echo "================================"
+echo "Your LAMP stack is ready for use"
+echo "================================"
