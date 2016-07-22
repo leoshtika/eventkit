@@ -16,7 +16,7 @@ INSTALLATION
 git clone https://github.com/leoshtika/eventkit.git
 ```
 
-### 2) Vagrant
+### 2) Install LAMP stack with Vagrant
 ```
 vagrant up
 vagrant ssh
@@ -35,14 +35,15 @@ php init
 ```
 Select [0] Development environment
 
-### 5) Configure the database
-- Open the common/config/main-local.php file
-- Use the dns, username (root) & password (pass123) of your DB server
-- Migrate the database. **Careful! Skip this step If the database exists**. if doesn't, create one and run `php yii migrate`.
-
-### 6) Install phpmyadmin
+### 5) Install phpmyadmin
 ```
 sudo apt-get install phpmyadmin
 ```
-username: root
-password: pass123
+Open phpmyadmin from: `http://localhost:4000/phpmyadmin`
+username: `root`, password: `pass123`
+
+### 6) Configure the database
+- Create a database and name it `eventkit`
+- Open the common/config/main-local.php file
+- Change host = `localhost`, dbname = `eventkit`, username = `root` & password = `pass123` 
+- Migrate the database running `php yii migrate`
