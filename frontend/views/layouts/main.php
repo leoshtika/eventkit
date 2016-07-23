@@ -29,10 +29,10 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Logo',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
         ],
     ]);
     $menuItems = [
@@ -45,7 +45,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
         if (User::isAdmin(Yii::$app->user->identity->email)) {
-            $menuItems[] = ['label' => 'Backend', 'url' => ['/temp/backend']];
+            $menuItems[] = ['label' => 'Backend', 'url' => Yii::$app->urlManagerBackend->createUrl(['/'])];
         }
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
@@ -74,9 +74,8 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; <?= date('Y') ?></p>
+        <p class="pull-right">Powered by ...</p>
     </div>
 </footer>
 
