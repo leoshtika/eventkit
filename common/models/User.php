@@ -25,10 +25,19 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE     = 10; // user is active
+    const STATUS_INACTIVE   = 20; // user is inactive
+    
+    const ROLE_USER         = 10; // frontend user
+    const ROLE_ADMIN        = 20; // administrator
 
-
+    // Used when creating a new User
+    public $password;
+    
+    // Used when updating a User
+    public $newPassword;
+    
+    
     /**
      * @inheritdoc
      */
@@ -53,8 +62,34 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['full_name', 'email'], 'required'],
+            [['role', 'status'], 'integer'],
+            ['role', 'default', 'value' => self::ROLE_USER],
+            ['role', 'validateRole'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'validateStatus'],
+            [['full_name', 'email'], 'string', 'max' => 255],
+            ['email', 'unique'],
+            ['email', 'email'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'full_name' => Yii::t('app', 'Full name'),
+            'email' => Yii::t('app', 'Email'),
+            'status' => Yii::t('app', 'Status'),
+            'role' => Yii::t('app', 'Role'),
+            'created_at' => Yii::t('app', 'Created at'),
+            'updated_at' => Yii::t('app', 'Updated at'),
+            
+            // Custom attributes
+            'password' => Yii::t('app', 'Password'),
+            'newPassword' => Yii::t('app', 'New password'),
         ];
     }
 
@@ -187,5 +222,68 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    /**
+     * An inline validator for 'status'
+     * @param string $attribute
+     */
+    public function validateStatus($attribute)
+    {
+        if (!array_key_exists($this->$attribute, $this->getStatusList())) {
+            $this->addError($attribute, Yii::t('app', 'The status value is not valid'));
+        }
+    }
+    
+    /**
+     * An inline validator for 'role'
+     * @param string $attribute
+     */
+    public function validateRole($attribute)
+    {
+        if (!array_key_exists($this->$attribute, $this->getRoleList())) {
+            $this->addError($attribute, Yii::t('app', 'The role value is not valid'));
+        }
+    }
+
+    /**
+     * Returns an array with all user statuses
+     * @return array
+     */
+    public function getStatusList() {
+        return [
+            self::STATUS_ACTIVE => Yii::t('user', 'Active'),
+            self::STATUS_INACTIVE => Yii::t('user', 'Inactive'),
+        ];
+    }
+    
+    /**
+     * Returns the label of this user's status
+     * @return string
+     */
+    public function getStatusLabel()
+    {
+        $statusAll = $this->getStatusList();
+        return $statusAll[$this->status];
+    }
+    
+    /**
+     * Returns an array with all user roles
+     * @return array
+     */
+    public function getRoleList() {
+        return [
+            self::ROLE_USER => Yii::t('app', 'User'),
+            self::ROLE_ADMIN => Yii::t('app', 'Admin'),
+        ];
+    }
+    
+    /**
+     * Returns the label of this user's status
+     * @return string
+     */
+    public function getRoleLabel() {
+        $roleAll = $this->getRoleList();
+        return $roleAll[$this->role];
     }
 }
