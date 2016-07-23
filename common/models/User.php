@@ -252,8 +252,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getStatusList() {
         return [
-            self::STATUS_ACTIVE => Yii::t('user', 'Active'),
-            self::STATUS_INACTIVE => Yii::t('user', 'Inactive'),
+            self::STATUS_ACTIVE => Yii::t('app', 'Active'),
+            self::STATUS_INACTIVE => Yii::t('app', 'Inactive'),
         ];
     }
     
@@ -285,5 +285,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function getRoleLabel() {
         $roleAll = $this->getRoleList();
         return $roleAll[$this->role];
+    }
+    
+    /**
+     * Checks if the email belongs to an 'admin' role
+     * @param string $email
+     * @return boolean
+     */
+    public static function isAdmin($email)
+    {
+        if (static::findOne(['email' => $email, 'role' => self::ROLE_ADMIN])) {
+            return true;
+        }
+        return false;
     }
 }
