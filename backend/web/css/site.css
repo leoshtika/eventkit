@@ -94,6 +94,10 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+.grid-view .column_id {
+    width: 80px;
+    text-align: center;
+}
 
 /* align the logout "link" (button in form) of the navbar */
 .nav > li > form {
