@@ -1,4 +1,9 @@
 <?php
+
+use \yii\web\Request;
+// 'admin' must match the regex string in .htaccess file in the root folder
+$baseUrl = str_replace('/backend/web', '/admin', (new Request)->getBaseUrl());
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -14,6 +19,7 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
+            'baseUrl' => $baseUrl,
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
@@ -37,14 +43,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
+            // 'baseUrl' => '/your-local-path',
         ],
-        */
     ],
     'params' => $params,
 ];

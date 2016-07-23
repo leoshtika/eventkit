@@ -1,4 +1,8 @@
 <?php
+
+use \yii\web\Request;
+$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -13,6 +17,7 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
+            'baseUrl' => $baseUrl,
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
@@ -36,14 +41,20 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
+            // 'baseUrl' => '/your-local-path',
         ],
-        */
+        'urlManagerBackend' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
+            // 'baseUrl' => '/your-local-path/4admin',
+        ],
     ],
     'params' => $params,
 ];
