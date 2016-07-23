@@ -113,3 +113,10 @@ a.desc:after {
 .nav > li > form > button:hover {
     text-decoration: none;
 }
+
+.allpages_title {
+    margin: 0 0 8px 0;
+}
+.allpages_buttons {
+    margin: 4px 0 8px 0;
+}
