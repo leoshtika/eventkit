@@ -47,3 +47,11 @@ username: `root`, password: `pass123`
 - Open the common/config/main-local.php file
 - Change host = `localhost`, dbname = `eventkit`, username = `root` & password = `pass123` 
 - Migrate the database running `php yii migrate`
+
+
+Message Translations
+--------------------
+To generate(extract) the translation files inside common/messages, run in the console from the root folder:
+```
+./yii message/extract @common/config/i18n.php
+```

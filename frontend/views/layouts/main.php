@@ -36,21 +36,22 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
+        ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
+        ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
     } else {
         if (User::isAdmin(Yii::$app->user->identity->email)) {
-            $menuItems[] = ['label' => 'Backend', 'url' => Yii::$app->urlManagerBackend->createUrl(['/'])];
+            $menuItems[] = ['label' => Yii::t('app', 'Backend'), 
+                'url' => Yii::$app->urlManagerBackend->createUrl(['/'])];
         }
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->full_name . ')',
+                Yii::t('app', 'Logout').' (' . Yii::$app->user->identity->full_name . ')',
                 ['class' => 'btn btn-link']
             )
             . Html::endForm()
