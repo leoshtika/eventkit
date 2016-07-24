@@ -46,14 +46,14 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
-            // 'baseUrl' => '/your-local-path',
+            // 'baseUrl' => '/',
         ],
         'urlManagerBackend' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
-            // 'baseUrl' => '/your-local-path/4admin',
+            // 'baseUrl' => '/admin',
         ],
     ],
     'params' => $params,

@@ -48,7 +48,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
-            // 'baseUrl' => '/your-local-path',
+            // 'baseUrl' => '/',
         ],
     ],
     'params' => $params,
