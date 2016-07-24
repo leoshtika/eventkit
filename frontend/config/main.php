@@ -18,16 +18,16 @@ return [
     'components' => [
         'request' => [
             'baseUrl' => $baseUrl,
-            'csrfParam' => '_csrf-frontend',
+            'csrfParam' => 'eventkit-csrf-front',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityCookie' => ['name' => 'eventkit-identity', 'httpOnly' => true],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
+            'name' => 'eventkit-sid',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

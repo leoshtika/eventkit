@@ -20,16 +20,16 @@ return [
     'components' => [
         'request' => [
             'baseUrl' => $baseUrl,
-            'csrfParam' => '_csrf-backend',
+            'csrfParam' => 'eventkit-csrf-back',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'identityCookie' => ['name' => 'eventkit-identity', 'httpOnly' => true],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'eventkit-sid',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
