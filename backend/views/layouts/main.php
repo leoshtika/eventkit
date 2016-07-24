@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use common\models\User;
 
 AppAsset::register($this);
 ?>
@@ -40,6 +41,12 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        
+        // Show menu items only for admins
+        if (User::isAdmin(Yii::$app->user->identity->email)) {
+            $menuItems[] = ['label' => Yii::t('app', 'Users'), 'url' => ['/user/index']];
+        }
+        
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
