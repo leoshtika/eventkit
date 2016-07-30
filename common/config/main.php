@@ -30,8 +30,8 @@ return [
          * Copy the following commented 'mailer' property to the 'main-local.php'
          * and configure the 'transport' property with your data
          * 
-         * If you want to send the emails to 'common/mail' folder for debbuging
-         * set 'useFileTransport' to false and delete transport property
+         * If you want to send the emails to 'common/mail' folder as file for debbuging
+         * set 'useFileTransport' to true and delete 'transport' property
          */
 //        'mailer' => [
 //            'class' => 'yii\swiftmailer\Mailer',
