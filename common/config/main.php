@@ -26,7 +26,7 @@ return [
                 ],
             ],
         ],
-        /**
+        /*
          * Copy the following commented 'mailer' property to the 'main-local.php'
          * and configure the 'transport' property with your data
          * 
