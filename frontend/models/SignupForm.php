@@ -13,6 +13,7 @@ class SignupForm extends Model
     public $full_name;
     public $email;
     public $password;
+    public $verifyCode;
 
 
     /**
@@ -33,6 +34,7 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['verifyCode', 'captcha'],
         ];
     }
 
