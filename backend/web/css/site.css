@@ -120,3 +120,7 @@ a.desc:after {
 .allpages_buttons {
     margin: 4px 0 8px 0;
 }
+.radio_list label {
+    margin-right: 16px;
+    cursor: pointer;
+}
