@@ -13,12 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="user-account">
-    <div class="row">
-        <div class="col-sm-12 hidden-xs">
-            <h1 class="allpages_title"><?= Html::encode($this->title) ?></h1>
-            <hr>
-        </div>
-    </div>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <hr>
     <p>
         <?= Yii::t('app', 'Here you can change all your account details.') ?>
     </p>
@@ -37,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="clearfix visible-xs"></div>
         <h2><?= $model->full_name ?></h2>
         <p>
-            - <?= Yii::t('app', 'Member since: <strong>{0, date}</strong>', $model->created_at) ?><br>
-            - <?= Yii::t('app', 'Last update: <strong>{0, date}</strong>', $model->updated_at) ?><br>
-            - <?= Yii::t('app', 'Role') ?>: <strong><?= $model->roleLabel ?></strong><br>
-            - <?= Yii::t('app', 'Change avatar via {gravatar}', [
+            <?= Yii::t('app', 'Member since: <strong>{0, date}</strong>', $model->created_at) ?><br>
+            <?= Yii::t('app', 'Last update: <strong>{0, date}</strong>', $model->updated_at) ?><br>
+            <?= Yii::t('app', 'Role') ?>: <strong><?= $model->roleLabel ?></strong><br>
+            <?= Yii::t('app', 'Change avatar via {gravatar}', [
                 'gravatar' => Html::a('Gravatar', 'http://gravatar.com', ['target'=>'_blank']),
             ]) ?>
         </p>

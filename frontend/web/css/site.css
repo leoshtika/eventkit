@@ -2,6 +2,9 @@ html,
 body {
     height: 100%;
 }
+h1 {
+    margin: 8px 0;
+}
 
 .wrap {
     min-height: 100%;
@@ -113,4 +116,9 @@ a.desc:after {
 
 .captcha {
     cursor: pointer;
+}
+.user-account .profile {
+    float:left; 
+    width:150px; 
+    padding:5px 2px;
 }

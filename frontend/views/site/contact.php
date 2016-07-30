@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <hr>
     <p>
         <?= Yii::t('app', 'Please fill out the following form to contact us. Thank you.') ?>
     </p>

@@ -48,6 +48,8 @@ AppAsset::register($this);
             $menuItems[] = ['label' => Yii::t('app', 'Backend'), 
                 'url' => Yii::$app->urlManagerBackend->createUrl(['/'])];
         }
+        $menuItems[] = ['label' => Yii::t('app', 'Profile'), 
+                'url' => ['user/account']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -65,10 +67,12 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+        <div class="visible-xs">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+        </div>
         <?= $content ?>
     </div>
 </div>
