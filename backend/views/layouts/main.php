@@ -36,10 +36,10 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Frontend', 'url' => Yii::$app->urlManagerFrontend->createUrl(['/'])],
+        ['label' => Yii::t('app', 'Frontend'), 'url' => Yii::$app->urlManagerFrontend->createUrl(['/'])],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
     } else {
         
         // Show menu items only for admins
@@ -50,7 +50,9 @@ AppAsset::register($this);
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->full_name . ')',
+                Yii::t('app', 'Logout ({full_name})', [
+                    'full_name' => Yii::$app->user->identity->full_name,
+                ]),
                 ['class' => 'btn btn-link']
             )
             . Html::endForm()

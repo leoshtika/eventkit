@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <p>
-        <?= Yii::t('app', 'Here you can change all your account details.')?>
+        <?= Yii::t('app', 'Here you can change all your account details.') ?>
     </p>
     <div>
         <div class="profile">

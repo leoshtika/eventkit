@@ -38,7 +38,7 @@ class UserController extends Controller
         $model = User::findIdentity(Yii::$app->user->id);
 
         if ($model === null) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -49,7 +49,7 @@ class UserController extends Controller
             }
 
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Your account has been successfully updated.');
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Your account has been successfully updated.'));
             }
         }
 

@@ -28,7 +28,7 @@ class UserController extends Controller
                         'actions' => ['index', 'create', 'update', 'delete', 'view'],
                         'allow' => true,
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
+                        'matchCallback' => function () {
                             return User::isAdmin(Yii::$app->user->identity->email);
                         }
                     ],
