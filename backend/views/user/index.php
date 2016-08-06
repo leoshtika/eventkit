@@ -56,7 +56,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class' => 'hidden-xs'],
                 'contentOptions' => ['class' => 'hidden-xs'],
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'headerOptions' => ['class' => 'column_buttons'],
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

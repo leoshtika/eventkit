@@ -80,7 +80,9 @@ a.desc:after {
 .grid-view .filters select {
     min-width: 50px;
 }
-
+.grid-view .column_buttons {
+    width:70px;
+}
 .hint-block {
     display: block;
     margin-top: 5px;
