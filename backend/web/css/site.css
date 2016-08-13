@@ -129,6 +129,12 @@ body {
         margin-right: 15px;
     }
 }
+.nav .badge {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    margin-left: 4px;
+    background-color: #F06222;
+}
 /* -------------------- Custom inverse navbar -- */
 
 
@@ -207,10 +213,7 @@ a.desc:after {
     cursor: pointer;
 }
 
-/*
- * Sidebar
- */
-
+/* Sidebar ------------------- */
 /* Hide for mobile, show later */
 .sidebar {
     display: none;
@@ -231,64 +234,7 @@ a.desc:after {
     }
 }
 
-/* -- Sidebar navigation ----------------------- */
-.nav-sidebar {
-    margin-right: -21px; /* 20px padding + 1px border */
-    margin-bottom: 10px;
-    margin-left: -20px;
-}
-.nav-sidebar > li > a {
-    padding-right: 12px;
-    padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-    background-color: #E6E6E6;
-}
-.nav-sidebar .glyphicon {
-    font-size:18px;
-    top: -1px !important;
-    margin-right: 10px;
-    vertical-align: middle;
-    color: #89898C;
-}
-.nav-sidebar .nav_label {
-    font-size:16px;
-}
-.nav .badge {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    margin-left: 4px;
-    background-color: #F06222;
-}
-@media (max-width: 991px) {
-    .nav-sidebar .badge {
-        float:right;
-        position:absolute;
-        margin-left: -14px;
-    }
-    .sidebar .item {
-        text-align: center;
-    }
-}
-.sidebar hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #D3D3D3;
-    margin: 1em 0;
-    padding: 0; 
-}
-.tooltip {
-    position: fixed;
-}
-/* ----------------------- Sidebar navigation -- */
-
-/*
- * Main content
- */
-
+/* Main content ------------------ */
 .main {
     padding: 70px 15px 15px 15px;
 }

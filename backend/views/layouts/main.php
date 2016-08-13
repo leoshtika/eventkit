@@ -11,6 +11,15 @@ use common\models\User;
 
 AppAsset::register($this);
 
+// Initialize BS3 tooltips
+$js = <<< 'SCRIPT'
+$(function () { 
+    $("[data-toggle='tooltip']").tooltip(); 
+});
+SCRIPT;
+// Register tooltip initialization javascript
+$this->registerJs($js);
+
 // Init $menuItems for top navigation
 $menuItems = [];
 
@@ -60,7 +69,7 @@ $menuData = [
         'label' => Yii::t('app', 'Questions'),
         'url' => ['question/index'],
         'icon' => 'question-sign',
-        'badge' => NULL,
+        'badge' => 2,
     ],
     'user' => [
         'label' => Yii::t('app', 'Users'),
@@ -125,7 +134,9 @@ $menuData = [
     
 <footer class="footer">
     <div class="container-fluid">
-        <p class="pull-right">Developed by Leonard Shtika</p>
+        <p class="pull-right">Developed by 
+            <a href="http://leonard.shtika.info/" target="_blank">Leonard Shtika</a>
+        </p>
     </div>
 </footer>
 
