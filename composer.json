@@ -10,7 +10,7 @@
             "homepage": "http://leonard.shtika.info"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
