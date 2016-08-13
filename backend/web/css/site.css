@@ -10,10 +10,6 @@ body {
     padding: 0 0 60px;
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
 .footer {
     height: 60px;
     background-color: #f5f5f5;
@@ -21,22 +17,122 @@ body {
     padding-top: 20px;
 }
 
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
+/*
+ * Top navigation
+ */
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+/* Hide default border to remove 1px line. */
+.navbar-fixed-top {
+    border: 0;
 }
-
-.not-set {
-    color: #c55;
-    font-style: italic;
+/* -- Custom inverse navbar -------------------- */
+.navbar-inverse {
+    background-color: #1C4F7A;
+    border-color: #256297;
 }
+.navbar-inverse .navbar-brand {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-text {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu {
+    background-color: #1C4F7A;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > a {
+    color: #eef7ff !important;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: #256297;
+}
+.navbar-inverse .navbar-nav > li > .dropdown-menu > li > .divider {
+    background-color: #1C4F7A;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color: #256297;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #256297;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #256297;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #256297;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #eef7ff;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    border-color: #1C4F7A;
+}
+.navbar-inverse .navbar-link {
+    color: #eef7ff;
+}
+.navbar-inverse .navbar-link:hover {
+    color: #ffffff;
+}
+.navbar-inverse .profile {
+    text-align: center; 
+    margin-top: 6px;
+    color: #FFFFFF;
+}
+.navbar-inverse .profile .role {
+    font-size: 16px;
+}
+.navbar-inverse .profile .name {
+    font-size: 16px;
+}
+.navbar-inverse .profile .email {
+    color: #B3C2CE;
+    padding-left:6px;
+    padding-right:6px;
+}
+.navbar-inverse .glyphicon {
+    margin-right: 10px;
+    vertical-align: middle;
+    top: -1px !important;
+}
+.navbar-inverse .dropdown-menu{
+    border: 1px solid #195484;
+    border-top: 1px solid #1C4F7A;
+}
+.navbar-inverse .divider {
+    background-color: #19476D !important;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, 
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, 
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #256297;
+}
+/* A litle more space for the navbar from browser border */
+@media (min-width: 768px) {
+    .navbar-right {
+        margin-right: 15px;
+    }
+}
+/* -------------------- Custom inverse navbar -- */
 
-/* add sorting icons to gridview sort links */
+
+/* Add sorting icons to gridview sort links ---- */
 a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
@@ -88,7 +184,6 @@ a.desc:after {
     margin-top: 5px;
     color: #999;
 }
-
 .error-summary {
     color: #a94442;
     background: #fdf7f7;
@@ -101,21 +196,6 @@ a.desc:after {
     text-align: center;
 }
 
-/* align the logout "link" (button in form) of the navbar */
-.nav > li > form {
-    padding: 8px;
-}
-
-@media(max-width:768px) {
-	.nav li > form {
-	    padding: 3px;
-	}
-}
-
-.nav > li > form > button:hover {
-    text-decoration: none;
-}
-
 .allpages_title {
     margin: 0 0 8px 0;
 }
@@ -125,4 +205,95 @@ a.desc:after {
 .radio_list label {
     margin-right: 16px;
     cursor: pointer;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px 16px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #DDD;
+    }
+}
+
+/* -- Sidebar navigation ----------------------- */
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 10px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding-right: 12px;
+    padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    background-color: #E6E6E6;
+}
+.nav-sidebar .glyphicon {
+    font-size:18px;
+    top: -1px !important;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #89898C;
+}
+.nav-sidebar .nav_label {
+    font-size:16px;
+}
+.nav .badge {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    margin-left: 4px;
+    background-color: #F06222;
+}
+@media (max-width: 991px) {
+    .nav-sidebar .badge {
+        float:right;
+        position:absolute;
+        margin-left: -14px;
+    }
+    .sidebar .item {
+        text-align: center;
+    }
+}
+.sidebar hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #D3D3D3;
+    margin: 1em 0;
+    padding: 0; 
+}
+.tooltip {
+    position: fixed;
+}
+/* ----------------------- Sidebar navigation -- */
+
+/*
+ * Main content
+ */
+
+.main {
+    padding: 70px 15px 15px 15px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding-left: 30px;
+    }
 }

@@ -5,13 +5,74 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use common\models\User;
 
 AppAsset::register($this);
+
+// Init $menuItems for top navigation
+$menuItems = [];
+
+// Array of data used for the menu top or sidebar navigation
+$menuData = [
+    'dashboard' => [
+        'label' => Yii::t('app', 'Dashboard'),
+        'url' => ['site/index'],
+        'icon' => 'tasks',
+    ],
+    'frontend' => [
+        'label' => Yii::t('app', 'Frontend'),
+        'url' => Yii::$app->urlManagerFrontend->createUrl(['/']),
+        'icon' => 'folder-open',
+    ],
+    'login' => [
+        'label' => Yii::t('app', 'Login'),
+        'url' => ['site/login'],
+        'icon' => 'log-in',
+    ],
+    'logout' => [
+        'label' => Yii::t('app', 'Logout'),
+        'url' => ['site/logout'],
+        'icon' => 'off',
+    ],
+    'help' => [
+        'label' => Yii::t('app', 'Help'),
+        'url' => ['site/help'],
+        'icon' => 'question-sign',
+    ],
+    'event' => [
+        'label' => Yii::t('app', 'Events'),
+        'url' => ['event/index'],
+        'icon' => 'blackboard',
+    ],
+    'session' => [
+        'label' => Yii::t('app', 'Sessions'),
+        'url' => ['session/index'],
+        'icon' => 'time',
+    ],
+    'speaker' => [
+        'label' => Yii::t('app', 'Speakers'),
+        'url' => ['speaker/index'],
+        'icon' => 'bullhorn',
+    ],
+    'question' => [
+        'label' => Yii::t('app', 'Questions'),
+        'url' => ['question/index'],
+        'icon' => 'question-sign',
+        'badge' => NULL,
+    ],
+    'user' => [
+        'label' => Yii::t('app', 'Users'),
+        'url' => ['user/index'],
+        'icon' => 'user',
+    ],
+    'settings' => [
+        'label' => Yii::t('app', 'Settings'),
+        'url' => '#',
+        'icon' => 'cog',
+    ],
+];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,58 +88,44 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'Logo',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => Yii::t('app', 'Frontend'), 'url' => Yii::$app->urlManagerFrontend->createUrl(['/'])],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
-    } else {
-        
-        // Show menu items only for admins
-        if (User::isAdmin(Yii::$app->user->identity->email)) {
-            $menuItems[] = ['label' => Yii::t('app', 'Users'), 'url' => ['/user/index']];
-        }
-        
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                Yii::t('app', 'Logout ({full_name})', [
-                    'full_name' => Yii::$app->user->identity->full_name,
-                ]),
-                ['class' => 'btn btn-link']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+    
+    <?= $this->render('_nav-top', [
+       'menuData' => $menuData,
+    ]) ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            <?php // Load nav-sidebar only if the user is admin ?>
+            <?php if (isset(Yii::$app->user->identity->email) && User::isAdmin(Yii::$app->user->identity->email)): ?>
+            
+                <div class="col-sm-1 col-md-2 sidebar">
+                    <?= $this->render('_nav-sidebar', [
+                        'menuData' => $menuData,
+                    ]) ?>
+                </div><!-- sidebar -->
+                <div class="col-sm-11 col-sm-offset-1 col-md-10 col-md-offset-2 main">
+                    <?= Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
+                    <?= Alert::widget() ?>
+                    <?= $content ?>
+                </div><!-- main -->
 
+            <?php else: ?>
+
+                <div class="main">
+                    <?= $content ?>
+                </div><!-- main -->
+
+            <?php endif; ?>
+        
+        </div><!-- row -->
+    </div><!-- container-fluid -->
+</div><!-- wrap -->
+    
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= date('Y') ?></p>
-
-        <p class="pull-right">Powered by ...</p>
+    <div class="container-fluid">
+        <p class="pull-right">Developed by Leonard Shtika</p>
     </div>
 </footer>
 

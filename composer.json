@@ -10,13 +10,14 @@
             "homepage": "http://leonard.shtika.info"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "cebe/yii2-gravatar": "*"
+        "cebe/yii2-gravatar": "*",
+        "leoshtika/yii2-nav-sidebar": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
