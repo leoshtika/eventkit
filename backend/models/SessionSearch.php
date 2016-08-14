@@ -18,8 +18,8 @@ class SessionSearch extends Session
     public function rules()
     {
         return [
-            [['id', 'event_id', 'starts', 'ends'], 'integer'],
-            [['title', 'description'], 'safe'],
+            [['id', 'event_id', 'starts', 'ends', 'created_at', 'updated_at'], 'integer'],
+            [['title'], 'safe'],
         ];
     }
 
@@ -65,8 +65,7 @@ class SessionSearch extends Session
             'ends' => $this->ends,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "session".
@@ -13,6 +14,8 @@ use Yii;
  * @property integer $starts
  * @property integer $ends
  * @property string $description
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property Question[] $questions
  * @property Event $event
@@ -31,11 +34,21 @@ class Session extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+    
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
             [['event_id', 'title', 'starts', 'ends', 'description'], 'required'],
-            [['event_id', 'starts', 'ends'], 'integer'],
+            [['event_id', 'starts', 'ends', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],
             [['title'], 'string', 'max' => 255],
             [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['event_id' => 'id']],
@@ -49,11 +62,13 @@ class Session extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'event_id' => Yii::t('app', 'Event ID'),
+            'event_id' => Yii::t('app', 'Event'),
             'title' => Yii::t('app', 'Title'),
             'starts' => Yii::t('app', 'Starts'),
             'ends' => Yii::t('app', 'Ends'),
             'description' => Yii::t('app', 'Description'),
+            'created_at' => Yii::t('app', 'Created at'),
+            'updated_at' => Yii::t('app', 'Updated at'),
         ];
     }
 
