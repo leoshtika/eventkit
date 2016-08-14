@@ -3,7 +3,7 @@ html{
 }
 body {
     height: 100%;
-    /* Move down content because we have a fixed navbar that is 50px tall */
+    /* Move down content, because of the 50px fixed navbar height */
     padding-top: 50px;
     font-family: 'Roboto Condensed', sans-serif;
     font-size:15px;
@@ -23,11 +23,8 @@ body {
     padding-top: 20px;
 }
 
-/*
- * Top navigation
- */
-
-/* Hide default border to remove 1px line. */
+/* -- Top navigation --------------------------- */
+/* Hide default border to remove 1px line */
 .navbar-fixed-top {
     border: 0;
 }
@@ -135,16 +132,50 @@ body {
         margin-right: 15px;
     }
 }
+/* -------------------- Custom inverse navbar -- */
+
 .nav .badge {
     font-family: Arial, sans-serif;
     font-size: 11px;
     margin-left: 4px;
     background-color: #F06222;
 }
-/* -------------------- Custom inverse navbar -- */
+/* --------------------------- Top navigation -- */
 
+/* -- Sidebar container ------------------------ */
+/* Hide for mobile, show for bigger screens */
+.sidebar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px 16px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #DDD;
+    }
+}
+/* ------------------------ Sidebar container -- */
 
-/* Add sorting icons to gridview sort links ---- */
+/* -- Main container --------------------------- */
+.main {
+    padding: 15px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding: 20px 30px;
+    }
+}
+/* --------------------------- Main container -- */
+
+/* -- Gridview (sorting icons, links etc) ------ */
 a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
@@ -155,27 +186,21 @@ a.asc:after, a.desc:after {
     line-height: 1;
     padding-left: 5px;
 }
-
 a.asc:after {
     content: /*"\e113"*/ "\e151";
 }
-
 a.desc:after {
     content: /*"\e114"*/ "\e152";
 }
-
 .sort-numerical a.asc:after {
     content: "\e153";
 }
-
 .sort-numerical a.desc:after {
     content: "\e154";
 }
-
 .sort-ordinal a.asc:after {
     content: "\e155";
 }
-
 .sort-ordinal a.desc:after {
     content: "\e156";
 }
@@ -183,7 +208,6 @@ a.desc:after {
 .grid-view td {
     white-space: nowrap;
 }
-
 .grid-view .filters input,
 .grid-view .filters select {
     min-width: 50px;
@@ -216,6 +240,10 @@ a.desc:after {
 .grid-view .filters td input, .grid-view .filters td select{
     padding:6px;
 }
+.grid-view .pagination {
+    margin: 0;
+}
+/* --------- Gridview (sorting icons, links etc) -- */
 
 .allpages_title {
     margin: 0 0 8px 0;
@@ -226,35 +254,4 @@ a.desc:after {
 .radio_list label {
     margin-right: 16px;
     cursor: pointer;
-}
-
-/* Sidebar ------------------- */
-/* Hide for mobile, show later */
-.sidebar {
-    display: none;
-}
-@media (min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 50px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 20px 16px;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
-        border-right: 1px solid #DDD;
-    }
-}
-
-/* Main content ------------------ */
-.main {
-    padding: 15px;
-}
-@media (min-width: 768px) {
-    .main {
-        padding: 20px 30px;
-    }
 }
