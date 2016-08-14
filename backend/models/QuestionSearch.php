@@ -18,7 +18,7 @@ class QuestionSearch extends Question
     public function rules()
     {
         return [
-            [['id', 'session_id', 'user_id'], 'integer'],
+            [['id', 'session_id', 'user_id', 'status'], 'integer'],
             [['question'], 'safe'],
         ];
     }
@@ -47,6 +47,7 @@ class QuestionSearch extends Question
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['created_at' => SORT_DESC]],
         ]);
 
         $this->load($params);
@@ -62,6 +63,7 @@ class QuestionSearch extends Question
             'id' => $this->id,
             'session_id' => $this->session_id,
             'user_id' => $this->user_id,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'question', $this->question]);
