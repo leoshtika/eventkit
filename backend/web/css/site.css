@@ -204,8 +204,17 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 .grid-view .column_id {
-    width: 80px;
+    width: 60px;
     text-align: center;
+}
+.grid-view .column_buttons {
+    width:70px;
+}
+.grid-view .filters td {
+    padding:2px;
+}
+.grid-view .filters td input, .grid-view .filters td select{
+    padding:6px;
 }
 
 .allpages_title {
