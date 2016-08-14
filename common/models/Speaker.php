@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "speaker".
@@ -12,6 +13,8 @@ use Yii;
  * @property string $full_name
  * @property string $email
  * @property string $resume
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property Session $session
  */
@@ -24,7 +27,17 @@ class Speaker extends \yii\db\ActiveRecord
     {
         return 'speaker';
     }
-
+    
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+    
     /**
      * @inheritdoc
      */
@@ -32,7 +45,7 @@ class Speaker extends \yii\db\ActiveRecord
     {
         return [
             [['session_id', 'full_name', 'email', 'resume'], 'required'],
-            [['session_id'], 'integer'],
+            [['session_id', 'created_at', 'updated_at'], 'integer'],
             [['resume'], 'string'],
             [['full_name', 'email'], 'string', 'max' => 255],
             [['session_id'], 'exist', 'skipOnError' => true, 'targetClass' => Session::className(), 'targetAttribute' => ['session_id' => 'id']],
@@ -46,10 +59,12 @@ class Speaker extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'session_id' => Yii::t('app', 'Session ID'),
-            'full_name' => Yii::t('app', 'Full Name'),
+            'session_id' => Yii::t('app', 'Session'),
+            'full_name' => Yii::t('app', 'Full name'),
             'email' => Yii::t('app', 'Email'),
             'resume' => Yii::t('app', 'Resume'),
+            'created_at' => Yii::t('app', 'Created at'),
+            'updated_at' => Yii::t('app', 'Updated at'),
         ];
     }
 

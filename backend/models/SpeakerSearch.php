@@ -47,6 +47,7 @@ class SpeakerSearch extends Speaker
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['updated_at' => SORT_DESC]],
         ]);
 
         $this->load($params);
@@ -64,8 +65,7 @@ class SpeakerSearch extends Speaker
         ]);
 
         $query->andFilterWhere(['like', 'full_name', $this->full_name])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'resume', $this->resume]);
+            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }

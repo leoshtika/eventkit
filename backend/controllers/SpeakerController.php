@@ -4,10 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Speaker;
+use common\models\User;
 use backend\models\SpeakerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * SpeakerController implements the CRUD actions for Speaker model.
@@ -20,6 +22,19 @@ class SpeakerController extends Controller
     public function behaviors()
     {
         return [
+         'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function () {
+                            return User::isAdmin(Yii::$app->user->identity->email);
+                        }
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
