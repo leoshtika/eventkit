@@ -2,7 +2,7 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     // The following 'language' is the default
-    'language' => 'el-GR',
+    // 'language' => 'el-GR',
     'timeZone' => 'Europe/Athens',
     'components' => [
         'cache' => [
