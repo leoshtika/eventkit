@@ -1,6 +1,8 @@
 html,
 body {
     height: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:16px;
 }
 h1 {
     margin: 8px 0;
@@ -39,7 +41,7 @@ h1 {
     font-style: italic;
 }
 
-/* add sorting icons to gridview sort links */
+/* -- Gridview (sorting icons, links etc) ------ */
 a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
@@ -50,46 +52,36 @@ a.asc:after, a.desc:after {
     line-height: 1;
     padding-left: 5px;
 }
-
 a.asc:after {
     content: "\e151";
 }
-
 a.desc:after {
     content: "\e152";
 }
-
 .sort-numerical a.asc:after {
     content: "\e153";
 }
-
 .sort-numerical a.desc:after {
     content: "\e154";
 }
-
 .sort-ordinal a.asc:after {
     content: "\e155";
 }
-
 .sort-ordinal a.desc:after {
     content: "\e156";
 }
-
 .grid-view td {
     white-space: nowrap;
 }
-
 .grid-view .filters input,
 .grid-view .filters select {
     min-width: 50px;
 }
-
 .hint-block {
     display: block;
     margin-top: 5px;
     color: #999;
 }
-
 .error-summary {
     color: #a94442;
     background: #fdf7f7;
@@ -97,28 +89,64 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+/* ------ Gridview (sorting icons, links etc) -- */
 
-/* align the logout "link" (button in form) of the navbar */
-.nav > li > form {
-    padding: 8px;
+/* -- Custom default navbar -------------------- */
+.navbar-default .profile {
+    text-align: center; 
+    margin-top: 6px;
+    color: #555555;
 }
-
-@media(max-width:768px) {
-	.nav li > form {
-	    padding: 3px;
-	}
+.navbar-default .profile .role {
+    font-size: 16px;
 }
-
-.nav > li > form > button:hover {
-    text-decoration: none;
+.navbar-default .profile .name {
+    font-size: 16px;
 }
+.navbar-default .profile .email {
+    color: #777777;
+    padding-left:6px;
+    padding-right:6px;
+}
+.navbar-default .glyphicon {
+    margin-right: 10px;
+    vertical-align: middle;
+    top: -1px !important;
+}
+.navbar-default .dropdown-menu{
+    border: 1px solid #CECECE;
+    border-top: 0;
+    background-color: #E2E2E2;
+    min-width: 180px;
+}
+.navbar-default .dropdown-menu > .active > a {
+    background-color: #F5F5F5;
+    color: #262626;
+}
+.navbar-default .divider {
+    background-color: #CECECE !important;
+}
+/* -------------------- Custom default navbar -- */
 
 
 .captcha {
     cursor: pointer;
 }
+
 .user-account .profile {
     float:left; 
     width:150px; 
     padding:5px 2px;
 }
+
+
+
+/*  
+    =============================
+    Bootstrap devices breakpoints
+    xs: @media (max-width: 767px) { ... }
+    sm: @media (min-width: 768px) and (max-width: 991px) { ... }
+    md: @media (min-width: 992px) and (max-width: 1199px) { ... }
+    lg: @media (min-width: 1200px) { ... }
+    =============================
+*/

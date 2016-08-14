@@ -113,6 +113,7 @@ body {
 .navbar-inverse .dropdown-menu{
     border: 1px solid #195484;
     border-top: 1px solid #1C4F7A;
+    min-width: 180px;
 }
 .navbar-inverse .divider {
     background-color: #19476D !important;
