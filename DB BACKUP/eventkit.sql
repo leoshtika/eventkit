@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2016 at 04:18 PM
+-- Generation Time: Aug 14, 2016 at 10:38 AM
 -- Server version: 5.5.50-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -31,10 +31,12 @@ CREATE TABLE IF NOT EXISTS `event` (
   `title` varchar(255) NOT NULL,
   `starts` int(11) NOT NULL,
   `ends` int(11) NOT NULL,
-  `address` int(11) NOT NULL,
-  `latitude` int(11) DEFAULT NULL,
-  `longitude` int(11) DEFAULT NULL,
+  `location` varchar(255) NOT NULL,
+  `latitude` decimal(11,8) DEFAULT NULL,
+  `longitude` decimal(11,8) DEFAULT NULL,
   `description` text NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -49,6 +51,8 @@ CREATE TABLE IF NOT EXISTS `question` (
   `session_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `question` text NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `session_id` (`session_id`),
   KEY `user_id` (`user_id`)
@@ -67,6 +71,8 @@ CREATE TABLE IF NOT EXISTS `session` (
   `starts` int(11) NOT NULL,
   `ends` int(11) NOT NULL,
   `description` text NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -83,6 +89,8 @@ CREATE TABLE IF NOT EXISTS `speaker` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `resume` text NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `session_id` (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -108,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `full_name` (`full_name`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
@@ -118,8 +126,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Constraints for table `question`
 --
 ALTER TABLE `question`
-  ADD CONSTRAINT `question_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `question_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `session`
