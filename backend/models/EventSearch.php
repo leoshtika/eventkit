@@ -18,8 +18,8 @@ class EventSearch extends Event
     public function rules()
     {
         return [
-            [['id', 'starts', 'ends', 'address', 'latitude', 'longitude'], 'integer'],
-            [['title', 'description'], 'safe'],
+            [['id', 'starts', 'ends', 'created_at', 'updated_at'], 'integer'],
+            [['title', 'location'], 'safe'],
         ];
     }
 
@@ -47,6 +47,7 @@ class EventSearch extends Event
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['updated_at' => SORT_DESC]],
         ]);
 
         $this->load($params);
@@ -62,13 +63,12 @@ class EventSearch extends Event
             'id' => $this->id,
             'starts' => $this->starts,
             'ends' => $this->ends,
-            'address' => $this->address,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'location', $this->location]);
 
         return $dataProvider;
     }

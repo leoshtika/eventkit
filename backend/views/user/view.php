@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
-
     <div class="row">
         <div class="col-sm-6 hidden-xs">
             <h1 class="allpages_title"><?= Html::encode($this->title) ?></h1>

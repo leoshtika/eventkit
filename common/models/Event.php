@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "event".
@@ -11,10 +12,12 @@ use Yii;
  * @property string $title
  * @property integer $starts
  * @property integer $ends
- * @property integer $address
- * @property integer $latitude
- * @property integer $longitude
+ * @property string $location
+ * @property string $latitude
+ * @property string $longitude
  * @property string $description
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property Session[] $sessions
  */
@@ -27,6 +30,16 @@ class Event extends \yii\db\ActiveRecord
     {
         return 'event';
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -34,10 +47,11 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'starts', 'ends', 'address', 'description'], 'required'],
-            [['starts', 'ends', 'address', 'latitude', 'longitude'], 'integer'],
+            [['title', 'starts', 'ends', 'location', 'description'], 'required'],
+            [['starts', 'ends', 'created_at', 'updated_at'], 'integer'],
+            [['latitude', 'longitude'], 'number'],
             [['description'], 'string'],
-            [['title'], 'string', 'max' => 255],
+            [['title', 'location'], 'string', 'max' => 255],
         ];
     }
 
@@ -51,10 +65,12 @@ class Event extends \yii\db\ActiveRecord
             'title' => Yii::t('app', 'Title'),
             'starts' => Yii::t('app', 'Starts'),
             'ends' => Yii::t('app', 'Ends'),
-            'address' => Yii::t('app', 'Address'),
+            'location' => Yii::t('app', 'Location'),
             'latitude' => Yii::t('app', 'Latitude'),
             'longitude' => Yii::t('app', 'Longitude'),
             'description' => Yii::t('app', 'Description'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 
