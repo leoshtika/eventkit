@@ -31,10 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'event_id',
+            [
+                'attribute' => 'event_id',
+                'value' => $model->event->title
+            ],
             'title',
-            'starts:datetime',
-            'ends:datetime',
+            'starts',
+            'ends',
             'description:ntext',
             'created_at:datetime',
             'updated_at:datetime',

@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\ArrayHelper;
+use common\models\Event;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\SessionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -30,10 +33,33 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class' => 'column_id'],
                 'contentOptions' => ['class' => 'column_id'],
             ],
-            'event_id',
+            [
+                'attribute' => 'event_id',
+                'value' => function ($searchModel){
+                    return $searchModel->event->title;
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'event_id', ArrayHelper::map(Event::find()->asArray()->all(), 'id', 'title'), [
+                    'prompt' => Yii::t('app', 'Show all'),
+                    'class' => 'form-control',
+                ]),
+            ],
             'title',
-            'starts:datetime',
-            'ends:datetime',
+            [
+                'attribute' => 'starts',
+                'filter' => false,
+            ],
+            [
+                'attribute' => 'ends',
+                'filter' => false,
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => ['date', 'php:d/m/Y h:i'],
+                'filter'=>false,
+                'filterOptions' => ['class' => 'hidden-xs'],
+                'headerOptions' => ['class' => 'hidden-xs'],
+                'contentOptions' => ['class' => 'hidden-xs'],
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'headerOptions' => ['class' => 'column_buttons'],

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2016 at 04:33 PM
+-- Generation Time: Sep 03, 2016 at 05:36 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -69,14 +69,14 @@ CREATE TABLE IF NOT EXISTS `session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `starts` int(11) NOT NULL,
-  `ends` int(11) NOT NULL,
+  `starts` datetime NOT NULL,
+  `ends` datetime NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_id` (`event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 

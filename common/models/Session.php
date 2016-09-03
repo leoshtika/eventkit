@@ -11,8 +11,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property integer $event_id
  * @property string $title
- * @property integer $starts
- * @property integer $ends
+ * @property string $starts
+ * @property string $ends
  * @property string $description
  * @property integer $created_at
  * @property integer $updated_at
@@ -48,7 +48,8 @@ class Session extends \yii\db\ActiveRecord
     {
         return [
             [['event_id', 'title', 'starts', 'ends', 'description'], 'required'],
-            [['event_id', 'starts', 'ends', 'created_at', 'updated_at'], 'integer'],
+            [['event_id', 'created_at', 'updated_at'], 'integer'],
+            [['starts', 'ends'], 'safe'],
             [['description'], 'string'],
             [['title'], 'string', 'max' => 255],
             [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['event_id' => 'id']],
