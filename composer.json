@@ -17,7 +17,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "cebe/yii2-gravatar": "*",
-        "leoshtika/yii2-nav-sidebar": "*"
+        "leoshtika/yii2-nav-sidebar": "*",
+        "kartik-v/yii2-widget-datetimepicker": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -10,8 +10,8 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $title
- * @property integer $starts
- * @property integer $ends
+ * @property string $starts
+ * @property string $ends
  * @property string $location
  * @property string $latitude
  * @property string $longitude
@@ -48,9 +48,10 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'starts', 'ends', 'location', 'description'], 'required'],
-            [['starts', 'ends', 'created_at', 'updated_at'], 'integer'],
+            [['starts', 'ends'], 'safe'],
             [['latitude', 'longitude'], 'number'],
             [['description'], 'string'],
+            [['created_at', 'updated_at'], 'integer'], 
             [['title', 'location'], 'string', 'max' => 255],
         ];
     }

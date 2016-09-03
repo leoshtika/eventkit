@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'starts:datetime',
-            'ends:datetime',
+            'starts',
+            'ends',
             'location',
             'latitude',
             'longitude',
