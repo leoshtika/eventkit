@@ -31,8 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['class' => 'column_id'],
             ],
             'title',
-            'starts',
-            'ends',
+            [
+                'attribute' => 'starts',
+                'filter' => false,
+            ],
+            [
+                'attribute' => 'ends',
+                'filter' => false,
+            ],
             'location',
             [
                 'attribute' => 'updated_at',
