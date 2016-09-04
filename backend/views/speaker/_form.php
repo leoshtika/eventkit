@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use common\models\Session;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Speaker */
@@ -12,7 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'session_id')->textInput() ?>
+    <?= $form->field($model, 'session_id')->dropDownList(ArrayHelper::map(Session::find()->all(), 'id', 'title'), [
+        'prompt' => Yii::t('app', 'Select a session')
+    ]) ?>
 
     <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
 

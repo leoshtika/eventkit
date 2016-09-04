@@ -48,6 +48,7 @@ class Speaker extends \yii\db\ActiveRecord
             [['session_id', 'created_at', 'updated_at'], 'integer'],
             [['resume'], 'string'],
             [['full_name', 'email'], 'string', 'max' => 255],
+            ['email', 'email'],
             [['session_id'], 'exist', 'skipOnError' => true, 'targetClass' => Session::className(), 'targetAttribute' => ['session_id' => 'id']],
         ];
     }

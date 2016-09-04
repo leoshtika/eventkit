@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\ArrayHelper;
+use common\models\Session;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\SpeakerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -30,7 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class' => 'column_id'],
                 'contentOptions' => ['class' => 'column_id'],
             ],
-            'session_id',
+            [
+                'attribute' => 'session_id',
+                'value' => function ($searchModel){
+                    return $searchModel->session->title;
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'session_id', ArrayHelper::map(Session::find()->asArray()->all(), 'id', 'title'), [
+                    'prompt' => Yii::t('app', 'Show all'),
+                    'class' => 'form-control',
+                ]),
+            ],
             'full_name',
             'email:email',
             [
