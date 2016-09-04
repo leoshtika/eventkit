@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Application';
+$this->title = 'EventKit' . ' - ' . Yii::t('app', 'Backend');
 ?>
 <div class="site-index">
     <div class="body-content">
