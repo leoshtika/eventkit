@@ -35,8 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'starts',
             'ends',
             'location',
-            'latitude',
-            'longitude',
             'description:ntext',
             'created_at:datetime',
             'updated_at:datetime',

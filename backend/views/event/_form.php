@@ -33,9 +33,9 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+    <?php /* echo $form->field($model, 'latitude')->textInput(['maxlength' => true]) */ ?>
 
-    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
+    <?php /* echo $form->field($model, 'longitude')->textInput(['maxlength' => true]) */ ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
