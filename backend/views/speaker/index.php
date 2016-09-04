@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $searchModel->session->title;
                 },
                 'filter' => Html::activeDropDownList($searchModel, 'session_id', ArrayHelper::map(Session::find()->asArray()->all(), 'id', 'title'), [
-                    'prompt' => Yii::t('app', 'Show all'),
+                    'prompt' => '',
                     'class' => 'form-control',
                 ]),
             ],

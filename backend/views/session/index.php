@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $searchModel->event->title;
                 },
                 'filter' => Html::activeDropDownList($searchModel, 'event_id', ArrayHelper::map(Event::find()->asArray()->all(), 'id', 'title'), [
-                    'prompt' => Yii::t('app', 'Show all'),
+                    'prompt' => '',
                     'class' => 'form-control',
                 ]),
             ],
