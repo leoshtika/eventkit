@@ -79,6 +79,10 @@ class QuestionController extends Controller
     public function actionCreate()
     {
         $model = new Question();
+        $model->status = Question::STATUS_NEW;
+        
+        // Set default user the logged in user
+        $model->user_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

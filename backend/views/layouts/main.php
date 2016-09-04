@@ -8,6 +8,7 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use common\models\User;
+use common\models\Question;
 
 AppAsset::register($this);
 
@@ -69,7 +70,7 @@ $menuData = [
         'label' => Yii::t('app', 'Questions'),
         'url' => ['question/index'],
         'icon' => 'question-sign',
-        'badge' => 2,
+        'badge' => Question::find()->where(['status' => Question::STATUS_NEW])->count(),
     ],
     'user' => [
         'label' => Yii::t('app', 'Users'),

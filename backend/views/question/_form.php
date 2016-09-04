@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use common\models\Session;
+use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Question */
@@ -12,9 +15,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'session_id')->textInput() ?>
+    <?= $form->field($model, 'session_id')->dropDownList(ArrayHelper::map(Session::find()->all(), 'id', 'title'), [
+        'prompt' => Yii::t('app', 'Select a session')
+    ]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->all(), 'id', 'full_name'), [
+        'prompt' => Yii::t('app', 'Select a user')
+    ]) ?>
 
     <?= $form->field($model, 'question')->textarea(['rows' => 6]) ?>
 
