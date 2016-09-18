@@ -111,10 +111,8 @@ git rebase -i master
 git push -u origin 999-name-of-your-branch
 ```
 
-### 8. Open a [pull request](http://help.github.com/send-pull-requests/) against upstream
-Go to your repository on GitHub and click "Pull Request", choose your branch on the right and enter some more 
-details in the comment box. To link the pull request to the issue put anywhere in the pull comment #999 
-where 999 is the issue number.
+### 8. Open a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) against upstream
+Go to your repository on GitHub and click "Pull Request", choose 'develop' as the base branch and your '999-name-of-your-branch' as the head branch and enter some more details in the comment box. To link the pull request to the issue put anywhere in the pull comment #999 where 999 is the issue number.
 Note that each pull-request should fix a single change.
 
 ### 9. Someone will review your code
