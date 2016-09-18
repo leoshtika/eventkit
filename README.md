@@ -56,6 +56,81 @@ username: `root`, password: `pass123`
 - Using the phpmyadmin import the eventkit.sql database from DB BACKUP folder
 
 
+Working on bugs and features
+----------------------------
+Having prepared your develop environment as explained above you can now start working on a feature or bugfix.
+
+### 1. Make sure there is an issue created for the thing you are working on if it requires significant effort to fix
+All new features and bug fixes should have an associated issue to provide a single point of reference for discussion 
+and documentation.
+If you do not find an existing issue matching what you intend to work on, please open a new issue or create 
+a pull request directly if it is straightforward fix.
+
+### 2. Fetch the latest code from the main 'eventkit' branch
+You should start at this point for every new contribution to make sure you are working on the latest code.
+```
+git checkout master
+git pull upstream master
+```
+
+### 3. Create a new branch for your feature based on the current master branch
+Each separate bug fix or change should go in its own branch. Branch names should be descriptive and start with the 
+number of the issue that your code relates to. If you aren't fixing any particular issue, just skip number. For example:
+```
+git checkout -b 999-name-of-your-branch
+```
+
+### 4. Do your magic, write your code
+All new code should follow [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) 
+coding standard. Make sure it works :)
+
+### 5. Commit your changes
+```
+git add --all
+git commit -m "Resolve #999: A brief description of this change"
+```
+
+### 6. Pull the latest code from upstream, rebase & squash your changes
+Before pushing your code to GitHub make sure to integrate upstream changes into your local repository
+```
+git checkout master
+git pull upstream master
+git checkout 999-name-of-your-branch
+git rebase master
+```
+This ensures that your changes can be merged with one click. 
+
+**Squash commits** 
+This step is not always necessary, but is required when your commit history is full of small, unimportant commits.
+```
+git rebase -i master
+```
+
+### 7. Push your code to GitHub
+```
+git push -u origin 999-name-of-your-branch
+```
+
+### 8. Open a [pull request](http://help.github.com/send-pull-requests/) against upstream
+Go to your repository on GitHub and click "Pull Request", choose your branch on the right and enter some more 
+details in the comment box. To link the pull request to the issue put anywhere in the pull comment #999 
+where 999 is the issue number.
+Note that each pull-request should fix a single change.
+
+### 9. Someone will review your code
+Someone will review your code, and you might be asked to make some changes, if so go to step #5 
+(you don't need to open another pull request if your current one is still open). 
+If your code is accepted it will be merged into the main branch and become part of the next release.
+
+### 10. Cleaning it up
+After your code was either accepted or declined you can delete branches you've worked with from your local repository and origin.
+```
+git checkout master
+git branch -D 999-name-of-your-branch
+git push origin --delete 999-name-of-your-branch
+```
+
+
 Message Translations
 --------------------
 To generate(extract) the translation files inside common/messages, run in the console from the root folder:
