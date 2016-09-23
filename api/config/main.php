@@ -48,6 +48,10 @@ return [
                         'GET account' => 'account',
                     ]
                 ],
+                [
+                    'class' => 'yii\rest\UrlRule', 
+                    'controller' => 'speaker'
+                ],
             ],
         ],
     ],
