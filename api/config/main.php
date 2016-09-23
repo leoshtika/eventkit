@@ -42,6 +42,7 @@ return [
                     'extraPatterns' => [
                         'OPTIONS login' => 'options',
                         'OPTIONS create' => 'options',
+                        'OPTIONS account' => 'options',
                         'POST login' => 'login',
                         'POST create' => 'create',
                         'GET account' => 'account',
