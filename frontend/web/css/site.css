@@ -116,11 +116,15 @@ a.desc:after {
 .navbar-default .dropdown-menu{
     border: 1px solid #CECECE;
     border-top: 0;
-    background-color: #E2E2E2;
+    background-color: #F8F8F8;
     min-width: 180px;
 }
 .navbar-default .dropdown-menu > .active > a {
-    background-color: #F5F5F5;
+    background-color: #E7E7E7;
+    color: #262626;
+}
+.navbar-default .dropdown-menu a:hover {
+    background-color: #E7E7E7;
     color: #262626;
 }
 .navbar-default .divider {
