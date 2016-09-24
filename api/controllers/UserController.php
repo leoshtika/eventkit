@@ -120,7 +120,6 @@ class UserController extends Controller
         }
     }
     
-
     /**
      * Returns user details if he is authenticated
      * @return array user account
@@ -130,12 +129,25 @@ class UserController extends Controller
         $response = [
             'email' => Yii::$app->user->identity->email,
             'full_name' => Yii::$app->user->identity->full_name,
-            'role' => Yii::$app->user->identity->role,
+            'avatar_url' => $this->getAvatarUrl(),
             'created_at' => Yii::$app->user->identity->created_at,
             'updated_at' => Yii::$app->user->identity->updated_at,
         ];
 
         return $response;
+    }
+    
+    /**
+     * Returns the users avatar image
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        $gravatarUrl = 'https://secure.gravatar.com/avatar/';
+        $gravatarHash = md5(strtolower(trim(Yii::$app->user->identity->email)));
+        $defaultImage = 'mm';
+
+        return $gravatarUrl . $gravatarHash .'?d='.$defaultImage;
     }
     
 }
