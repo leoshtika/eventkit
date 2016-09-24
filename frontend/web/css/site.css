@@ -7,7 +7,20 @@ body {
 h1 {
     margin: 8px 0;
 }
-
+a {
+    color: #7d65a3;
+}
+a:active, a:hover {
+    color: #645082;
+}
+.btn-primary {
+    background-color: #7d65a3;
+    border-color: #705a92;
+}
+.btn-primary:hover, .btn-primary:active {
+    background-color: #705a92;
+    border-color: #645082;
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -92,6 +105,12 @@ a.desc:after {
 /* ------ Gridview (sorting icons, links etc) -- */
 
 /* -- Custom default navbar -------------------- */
+.navbar-default .navbar-brand {
+    color: #7d65a3;
+}
+.navbar-default .navbar-brand:hover {
+    color: #705a92;
+}
 .navbar-default .profile {
     text-align: center; 
     margin-top: 6px;

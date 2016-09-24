@@ -13,7 +13,7 @@ $this->title = 'EventKit';
 
         <p class="lead">This application is under construction.</p>
 
-        <p><a class="btn btn-lg btn-success" href="#">Get started here</a></p>
+        <p><a class="btn btn-lg btn-primary" href="#">Get started here</a></p>
     </div>
 
     <div class="body-content">
