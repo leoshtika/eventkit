@@ -37,7 +37,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule', 
-                    'controller' => ['user'],
+                    'controller' => 'user',
                     'pluralize' => false,
                     'extraPatterns' => [
                         'OPTIONS login' => 'options',
@@ -50,7 +50,7 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule', 
-                    'controller' => 'speaker'
+                    'controller' => 'speaker',
                 ],
             ],
         ],

@@ -1,0 +1,2 @@
+# without the following line the images inside the files4users folder will not be visible
+RewriteEngine on
