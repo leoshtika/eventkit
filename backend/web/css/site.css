@@ -14,6 +14,14 @@ a {
 a:active, a:hover {
     color: #645082;
 }
+.btn-primary {
+    background-color: #7d65a3;
+    border-color: #705a92;
+}
+.btn-primary:hover, .btn-primary:active {
+    background-color: #705a92;
+    border-color: #645082;
+}
 .wrap {
     min-height: 100%;
     height: auto;
