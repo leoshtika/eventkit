@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>EventKit by leoshtika</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>EventKit</h1>
+        <h2>A conference management framework</h2>
+        <a href="https://github.com/leoshtika/eventkit" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="eventkit-" class="anchor" href="#eventkit-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EventKit </h1>
+
+<p>Conference management framework</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REQUIREMENTS</h2>
+
+<ul>
+<li>If you are going to use Vagrant for this project you will need to install Virtualbox and Vagrant to your machine. All the needed components are already installed there. </li>
+<li>If you have your own developing enviroment make sure you have a LAMP stack with PHP 5.4.0. or higher and <strong>php5-intl</strong> extension enabled (used for International date/time/number/currency formatting). To install this extension on Ubuntu run: <code>sudo apt-get install php5-intl</code>.</li>
+</ul>
+
+<h2>
+<a id="prepare-your-development-environment" class="anchor" href="#prepare-your-development-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prepare your development environment</h2>
+
+<h3>
+<a id="1-fork-the-eventkit-repository-on-github-and-clone-your-fork-to-your-development-environment" class="anchor" href="#1-fork-the-eventkit-repository-on-github-and-clone-your-fork-to-your-development-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Fork the 'eventkit' repository on GitHub and clone your fork to your development environment</h3>
+
+<pre><code>git clone https://github.com/YOUR-GITHUB-USERNAME/eventkit.git
+</code></pre>
+
+<h3>
+<a id="2-add-the-main-eventkit-repository-as-an-additional-git-remote-called-upstream" class="anchor" href="#2-add-the-main-eventkit-repository-as-an-additional-git-remote-called-upstream" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Add the main 'eventkit' repository as an additional git remote called "upstream"</h3>
+
+<pre><code>git remote add upstream https://github.com/leoshtika/eventkit.git
+</code></pre>
+
+<h3>
+<a id="3-install-lamp-stack-with-vagrant" class="anchor" href="#3-install-lamp-stack-with-vagrant" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Install LAMP stack with Vagrant</h3>
+
+<pre><code>vagrant up
+vagrant ssh
+cd /vagrant
+</code></pre>
+
+<p>Now you are inside the VM and in the /vagrant folder. All the following commands will be executed from here.</p>
+
+<h3>
+<a id="4-install-dependencies" class="anchor" href="#4-install-dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Install dependencies</h3>
+
+<pre><code>composer global require "fxp/composer-asset-plugin:~1.1.1"
+composer install
+</code></pre>
+
+<h3>
+<a id="5-initialize-the-application" class="anchor" href="#5-initialize-the-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Initialize the application</h3>
+
+<pre><code>php init
+</code></pre>
+
+<p>Select [0] Development environment</p>
+
+<h3>
+<a id="6-install-phpmyadmin" class="anchor" href="#6-install-phpmyadmin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Install phpmyadmin</h3>
+
+<pre><code>sudo apt-get install phpmyadmin
+</code></pre>
+
+<p>Open phpmyadmin from: <code>http://localhost:4000/phpmyadmin</code>
+username: <code>root</code>, password: <code>pass123</code></p>
+
+<h3>
+<a id="7-configure-the-database" class="anchor" href="#7-configure-the-database" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Configure the database</h3>
+
+<ul>
+<li>Create a database and name it <code>eventkit</code>
+</li>
+<li>Open the common/config/main-local.php file and change host = <code>localhost</code>, dbname = <code>eventkit</code>, username = <code>root</code> &amp; password = <code>pass123</code> </li>
+<li>Using the phpmyadmin import the eventkit.sql database from DB BACKUP folder</li>
+</ul>
+
+<h2>
+<a id="working-on-bugs-and-features" class="anchor" href="#working-on-bugs-and-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Working on bugs and features</h2>
+
+<p>Having prepared your develop environment as explained above you can now start working on a feature or bugfix.</p>
+
+<h3>
+<a id="1-make-sure-there-is-an-issue-created-for-the-thing-you-are-working-on-if-it-requires-significant-effort-to-fix" class="anchor" href="#1-make-sure-there-is-an-issue-created-for-the-thing-you-are-working-on-if-it-requires-significant-effort-to-fix" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Make sure there is an issue created for the thing you are working on if it requires significant effort to fix</h3>
+
+<p>All new features and bug fixes should have an associated issue to provide a single point of reference for discussion 
+and documentation.
+If you do not find an existing issue matching what you intend to work on, please open a new issue or create 
+a pull request directly if it is straightforward fix.</p>
+
+<h3>
+<a id="2-fetch-the-latest-code-from-the-main-eventkit-branch" class="anchor" href="#2-fetch-the-latest-code-from-the-main-eventkit-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Fetch the latest code from the main 'eventkit' branch</h3>
+
+<p>You should start at this point for every new contribution to make sure you are working on the latest code.</p>
+
+<pre><code>git checkout master
+git pull upstream master
+</code></pre>
+
+<h3>
+<a id="3-create-a-new-branch-for-your-feature-based-on-the-current-master-branch" class="anchor" href="#3-create-a-new-branch-for-your-feature-based-on-the-current-master-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Create a new branch for your feature based on the current master branch</h3>
+
+<p>Each separate bug fix or change should go in its own branch. Branch names should be descriptive and start with the 
+number of the issue that your code relates to. If you aren't fixing any particular issue, just skip number. For example:</p>
+
+<pre><code>git checkout -b 999-name-of-your-branch
+</code></pre>
+
+<h3>
+<a id="4-do-your-magic-write-your-code" class="anchor" href="#4-do-your-magic-write-your-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Do your magic, write your code</h3>
+
+<p>All new code should follow <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md">PSR-2</a> 
+coding standard. Make sure it works :)</p>
+
+<h3>
+<a id="5-commit-your-changes" class="anchor" href="#5-commit-your-changes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Commit your changes</h3>
+
+<pre><code>git add --all
+git commit -m "Resolve #999: A brief description of this change"
+</code></pre>
+
+<h3>
+<a id="6-pull-the-latest-code-from-upstream-rebase--squash-your-changes" class="anchor" href="#6-pull-the-latest-code-from-upstream-rebase--squash-your-changes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Pull the latest code from upstream, rebase &amp; squash your changes</h3>
+
+<p>Before pushing your code to GitHub make sure to integrate upstream changes into your local repository</p>
+
+<pre><code>git checkout master
+git pull upstream master
+git checkout 999-name-of-your-branch
+git rebase master
+</code></pre>
+
+<p>This ensures that your changes can be merged with one click. </p>
+
+<p><strong>Squash commits</strong> 
+This step is not always necessary, but is required when your commit history is full of small, unimportant commits.</p>
+
+<pre><code>git rebase -i master
+</code></pre>
+
+<h3>
+<a id="7-push-your-code-to-github" class="anchor" href="#7-push-your-code-to-github" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Push your code to GitHub</h3>
+
+<pre><code>git push -u origin 999-name-of-your-branch
+</code></pre>
+
+<h3>
+<a id="8-open-a-pull-request-against-upstream" class="anchor" href="#8-open-a-pull-request-against-upstream" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>8. Open a <a href="https://help.github.com/articles/creating-a-pull-request-from-a-fork/">pull request</a> against upstream</h3>
+
+<p>Go to your repository on GitHub and click "Pull Request", choose 'develop' as the base branch and your '999-name-of-your-branch' as the head branch and enter some more details in the comment box. To link the pull request to the issue put anywhere in the pull comment #999 where 999 is the issue number.
+Note that each pull-request should fix a single change.</p>
+
+<h3>
+<a id="9-someone-will-review-your-code" class="anchor" href="#9-someone-will-review-your-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9. Someone will review your code</h3>
+
+<p>Someone will review your code, and you might be asked to make some changes, if so go to step #5 
+(you don't need to open another pull request if your current one is still open). 
+If your code is accepted it will be merged into the main branch and become part of the next release.</p>
+
+<h3>
+<a id="10-cleaning-it-up" class="anchor" href="#10-cleaning-it-up" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10. Cleaning it up</h3>
+
+<p>After your code was either accepted or declined you can delete branches you've worked with from your local repository and origin.</p>
+
+<pre><code>git checkout master
+git branch -D 999-name-of-your-branch
+git push origin --delete 999-name-of-your-branch
+</code></pre>
+
+<h2>
+<a id="message-translations" class="anchor" href="#message-translations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Message Translations</h2>
+
+<p>To generate(extract) the translation files inside common/messages, run in the console from the root folder:</p>
+
+<pre><code>./yii message/extract @common/config/i18n.php
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/leoshtika/eventkit/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/leoshtika/eventkit/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/leoshtika/eventkit"></a> is maintained by <a href="https://github.com/leoshtika">leoshtika</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
