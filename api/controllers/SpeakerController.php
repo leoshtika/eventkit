@@ -16,6 +16,9 @@ class SpeakerController extends Controller
     public function behaviors()
     {
         $behaviors = parent::behaviors();
+        
+        // Remove authentication filter, before the CORS Preflight requests and set it after the CORS filter
+        unset($behaviors['authenticator']);
 
         $behaviors['corsFilter'] = [
             'class' => Cors::className(),
