@@ -12,27 +12,21 @@ class SignupFormTest extends DbTestCase
 
     use Specify;
 
-    public function testCorrectSignup()
+    public function testMissingCaptchaSignup()
     {
         $model = new SignupForm([
-            'username' => 'some_username',
+            'full_name' => 'Some Name',
             'email' => 'some_email@example.com',
             'password' => 'some_password',
         ]);
-
-        $user = $model->signup();
-
-        $this->assertInstanceOf('common\models\User', $user, 'user should be valid');
-
-        expect('username should be correct', $user->username)->equals('some_username');
-        expect('email should be correct', $user->email)->equals('some_email@example.com');
-        expect('password should be correct', $user->validatePassword('some_password'))->true();
+        
+        expect('captcha is not added, user should not be created', $model->signup())->null();
     }
 
     public function testNotCorrectSignup()
     {
         $model = new SignupForm([
-            'username' => 'troy.becker',
+            'full_name' => 'Nicolas Dianna',
             'email' => 'nicolas.dianna@hotmail.com',
             'password' => 'some_password',
         ]);
