@@ -7,7 +7,7 @@ REQUIREMENTS
 ------------
 
 - If you are going to use Vagrant for this project you will need to install Virtualbox and Vagrant to your machine. All the needed components are already installed there. 
-- If you have your own developing enviroment make sure you have a LAMP stack with PHP 5.4.0. or higher and **php5-intl** extension enabled (used for International date/time/number/currency formatting). To install this extension on Ubuntu run: `sudo apt-get install php5-intl`.
+- If you have your own developing environment make sure you have a LAMP stack with PHP 5.4.0. or higher (PHP 5.6 is recommended) and **php5.6-mcrypt curl php5.6-curl php5.6-mysql php5.6-intl php5.6-mbstring** extensions installed and enabled.
 
 
 Prepare your development environment
@@ -32,10 +32,10 @@ cd /vagrant
 Now you are inside the VM and in the /vagrant folder. All the following commands will be executed from here.
 
 ### 4. Install dependencies
+If you are NOT using Vagrant make sure to install `composer global require "fxp/composer-asset-plugin:~1.1.1"` before running the following. 
 ```
-composer global require "fxp/composer-asset-plugin:~1.1.1"
 composer install
-```
+``` 
 
 ### 5. Initialize the application
 ```

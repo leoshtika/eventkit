@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+# Add repository for PHP (5.6 || 7.0)
+add-apt-repository ppa:ondrej/php
+
 # Update the list of available packages
 apt-get -y update
+
+# Install GIT
+apt-get install -y git
 
 # Installing Apache
 apt-get install -y apache2
@@ -24,16 +30,26 @@ debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again pa
 apt-get -y install mysql-server libapache2-mod-auth-mysql
 
 # Installing PHP and it's dependencies
-apt-get -y install php5 libapache2-mod-php5 php5-mcrypt curl php5-curl php5-mysql php5-intl
-
-# Restart Apache
-service apache2 restart
+# PHP 5.5 (this is the default and don't need ppa:ondrej/php)
+# apt-get -y install php5 libapache2-mod-php5 php5-mcrypt curl php5-curl php5-intl php5-imagick php5-mysql
+# PHP 5.6 (from ppa:ondrej/php)
+apt-get -y install php5.6 libapache2-mod-php5.6 php5.6-mcrypt curl php5.6-curl php5.6-intl php5.6-imagick php5.6-mysql php5.6-mbstring
 
 # Install Composer
 if [ ! -f /usr/local/bin/composer ]; then
     curl -sS https://getcomposer.org/installer | php
     mv composer.phar /usr/local/bin/composer
 fi
+
+# Install 'composer-asset-plugin'
+echo "Installing Composer Asset Plugin"
+composer global require "fxp/composer-asset-plugin:~1.1.1"
+
+# Restart Apache
+service apache2 restart
+
+# Add an alias for codecept
+echo "alias codecept='php /vagrant/vendor/bin/codecept'" >> /home/vagrant/.bashrc
 
 echo "================================"
 echo "Your LAMP stack is ready for use"
