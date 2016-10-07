@@ -32,8 +32,8 @@ apt-get -y install mysql-server libapache2-mod-auth-mysql
 # Installing PHP and it's dependencies
 # PHP 5.5 (this is the default and don't need ppa:ondrej/php)
 # apt-get -y install php5 libapache2-mod-php5 php5-mcrypt curl php5-curl php5-intl php5-imagick php5-mysql
-# PHP 5.6 (from ppa:ondrej/php)
-apt-get -y install php5.6 libapache2-mod-php5.6 php5.6-mcrypt curl php5.6-curl php5.6-intl php5.6-imagick php5.6-mysql php5.6-mbstring
+# PHP 7.0 (from ppa:ondrej/php)
+apt-get -y install php7.0 libapache2-mod-php7.0 php7.0-mcrypt curl php7.0-curl php7.0-intl php7.0-imagick php7.0-mysql php7.0-mbstring php7.0-xml
 
 # Install Composer
 if [ ! -f /usr/local/bin/composer ]; then
