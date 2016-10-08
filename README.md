@@ -44,10 +44,14 @@ php init
 Select [0] Development environment
 
 ### 6. Configure the database
-- Open adminer from: `http://localhost:4000/adminer` (username: root, password: pass123)
+- Open adminer app from this url: `http://localhost:4000/adminer` (username: root, password: pass123)
 - Create a database and name it `eventkit`
 - Import the eventkit.sql database from /DB_BACKUP folder
 - Open the common/config/main-local.php file and change host = `localhost`, dbname = `eventkit`, username = `root` & password = `pass123`
+
+You are done. The application url is: `http://localhost:4000`. 
+
+To create an administrator, signup using the signup form: `http://localhost:4000/site/signup` and change the user role from `10` to `20` using the adminer app. You can find the backend app here: `http://localhost:4000/admin`.
 
 
 Working on bugs and features
