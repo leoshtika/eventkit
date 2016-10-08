@@ -43,17 +43,11 @@ php init
 ```
 Select [0] Development environment
 
-### 6. Install phpmyadmin
-```
-sudo apt-get install phpmyadmin
-```
-Open phpmyadmin from: `http://localhost:4000/phpmyadmin`
-username: `root`, password: `pass123`
-
-### 7. Configure the database
+### 6. Configure the database
+- Open adminer from: `http://localhost:4000/adminer` (username: root, password: pass123)
 - Create a database and name it `eventkit`
-- Open the common/config/main-local.php file and change host = `localhost`, dbname = `eventkit`, username = `root` & password = `pass123` 
-- Using the phpmyadmin import the eventkit.sql database from DB BACKUP folder
+- Import the eventkit.sql database from /DB_BACKUP folder
+- Open the common/config/main-local.php file and change host = `localhost`, dbname = `eventkit`, username = `root` & password = `pass123`
 
 
 Working on bugs and features
