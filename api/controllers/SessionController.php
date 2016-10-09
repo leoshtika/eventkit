@@ -56,8 +56,9 @@ class SessionController extends Controller
     {
         return Session::find()
                 ->select([
-                        'session.id', 'session.title AS title', 'session.starts', 'session.ends', 'session.description', 
-                        'event.title AS event', 'speaker.full_name AS speaker'
+                        'session.id', 'session.title AS title', 'unix_timestamp(session.starts) AS starts', 
+                        'unix_timestamp(session.ends) AS ends', 'session.description', 
+                        'event.title AS event', 'speaker.id AS speaker_id', 'speaker.full_name AS speaker_name'
                     ])
                 ->leftJoin('event', 'session.event_id = event.id')
                 ->leftJoin('speaker', 'session.id = speaker.session_id')
