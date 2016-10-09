@@ -52,6 +52,10 @@ return [
                     'class' => 'yii\rest\UrlRule', 
                     'controller' => 'speaker',
                 ],
+                [
+                    'class' => 'yii\rest\UrlRule', 
+                    'controller' => 'session',
+                ],
             ],
         ],
     ],
