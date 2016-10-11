@@ -20,6 +20,7 @@ git clone https://github.com/YOUR-GITHUB-USERNAME/eventkit.git
 
 ### 2. Add the main 'eventkit' repository as an additional git remote called "upstream"
 ```
+cd eventkit
 git remote add upstream https://github.com/leoshtika/eventkit.git
 ```
 
@@ -45,7 +46,7 @@ Select [0] Development environment
 
 ### 6. Configure the database
 - Open adminer app from this url: `http://localhost:4000/adminer` (username: root, password: pass123)
-- Create a database and name it `eventkit`
+- Create a ('utf8_general_ci' collation) database and name it `eventkit`
 - Import the eventkit.sql database from /DB_BACKUP folder
 - Open the common/config/main-local.php file and change host = `localhost`, dbname = `eventkit`, username = `root` & password = `pass123`
 
