@@ -4,6 +4,7 @@
 /* @var $model common\models\User */
 /* @var $form yii\widgets\ActiveForm */
 
+use Yii;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use cebe\gravatar\Gravatar;
@@ -15,6 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-account">
     <h1><?= Html::encode($this->title) ?></h1>
     <hr>
+    
+    <?php if(Yii::$app->session->hasFlash('success')):?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo Yii::$app->session->getFlash('success'); ?>
+    </div>
+    <?php endif; ?>
+
     <p>
         <?= Yii::t('app', 'Here you can change all your account details.') ?>
     </p>
