@@ -18,7 +18,10 @@ a:active, a:hover {
     background-color: #7d65a3;
     border-color: #705a92;
 }
-.btn-primary:hover, .btn-primary:active {
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:active:focus {
     background-color: #705a92;
     border-color: #645082;
 }
