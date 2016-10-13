@@ -47,8 +47,9 @@ return [
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            // Overwrite the 'baseUrl' property in the 'main-local.php' file. Example:
-            // 'baseUrl' => '/',
+            // If you don't use Vagrant or have a different path to the application, 
+            // override the 'baseUrl' property in the 'main-local.php' file.
+            'baseUrl' => '/',
         ],
     ],
     'params' => $params,
