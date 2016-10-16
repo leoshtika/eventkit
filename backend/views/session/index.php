@@ -43,6 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => false,
             ],
             [
+                'header' => Yii::t('app', 'Speakers'),
+                'value' => function($searchModel) {
+                    return implode(', ', ArrayHelper::map($searchModel->speakers, 'id', 'full_name'));
+                },
+            ],
+            [
                 'attribute' => 'event_id',
                 'value' => function ($searchModel){
                     return $searchModel->event->title;
@@ -51,14 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'prompt' => '',
                     'class' => 'form-control',
                 ]),
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => ['date', 'php:d/m/Y h:i'],
-                'filter'=>false,
-                'filterOptions' => ['class' => 'hidden-xs'],
-                'headerOptions' => ['class' => 'hidden-xs'],
-                'contentOptions' => ['class' => 'hidden-xs'],
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
