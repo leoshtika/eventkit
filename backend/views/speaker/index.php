@@ -33,7 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class' => 'column_id'],
                 'contentOptions' => ['class' => 'column_id'],
             ],
-            'full_name',
+            [
+                'attribute' => 'full_name',
+                'format' => 'html', 
+                'value' => function($searchModel){
+                    return Html::img('/files4users/speakers/'.$searchModel->id.'.png', 
+                            ['width' => '50px']).' '.$searchModel->full_name;
+                },
+            ],
             'email:email',
             [
                 'attribute' => 'session_id',
