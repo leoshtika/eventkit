@@ -2,7 +2,6 @@
 
 namespace backend\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Session;
@@ -47,7 +46,7 @@ class SessionSearch extends Session
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> ['defaultOrder' => ['updated_at' => SORT_DESC]],
+            'sort'=> ['defaultOrder' => ['starts' => SORT_ASC]],
         ]);
 
         $this->load($params);
