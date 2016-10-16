@@ -33,6 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class' => 'column_id'],
                 'contentOptions' => ['class' => 'column_id'],
             ],
+            'full_name',
+            'email:email',
             [
                 'attribute' => 'session_id',
                 'value' => function ($searchModel){
@@ -43,8 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'form-control',
                 ]),
             ],
-            'full_name',
-            'email:email',
             [
                 'attribute' => 'updated_at',
                 'format' => ['date', 'php:d/m/Y h:i'],
