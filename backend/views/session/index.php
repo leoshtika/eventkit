@@ -33,6 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['class' => 'column_id'],
                 'contentOptions' => ['class' => 'column_id'],
             ],
+            'title',
+            [
+                'attribute' => 'starts',
+                'filter' => false,
+            ],
+            [
+                'attribute' => 'ends',
+                'filter' => false,
+            ],
             [
                 'attribute' => 'event_id',
                 'value' => function ($searchModel){
@@ -42,15 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'prompt' => '',
                     'class' => 'form-control',
                 ]),
-            ],
-            'title',
-            [
-                'attribute' => 'starts',
-                'filter' => false,
-            ],
-            [
-                'attribute' => 'ends',
-                'filter' => false,
             ],
             [
                 'attribute' => 'updated_at',
