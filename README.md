@@ -7,7 +7,7 @@ REQUIREMENTS
 ------------
 
 - If you are going to use Vagrant for this project you will need to install Virtualbox and Vagrant to your machine. All the needed components are already installed there. 
-- If you have your own developing environment make sure you have a LAMP stack with PHP 5.4.0. or higher (PHP 5.6 is recommended) and **php5.6-mcrypt curl php5.6-curl php5.6-mysql php5.6-intl php5.6-mbstring** extensions installed and enabled.
+- If you have your own developing environment make sure you have a LAMP stack with PHP 5.4.0. or higher (PHP 7.0 is recommended) and **libapache2-mod-php7.0 php7.0-mcrypt curl php7.0-curl php7.0-intl php7.0-imagick php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip** extensions installed and enabled.
 
 
 Prepare your development environment
