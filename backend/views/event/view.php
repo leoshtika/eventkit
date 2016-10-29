@@ -32,8 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'starts',
-            'ends',
+            [
+                'attribute' => 'starts',
+                'value'=> date('l, jS \of F Y H:i', strtotime($model->starts))
+            ],
+            [
+                'attribute' => 'ends',
+                'value'=> date('l, jS \of F Y H:i', strtotime($model->ends))
+            ],
             'location',
             'description:ntext',
             'created_at:datetime',
