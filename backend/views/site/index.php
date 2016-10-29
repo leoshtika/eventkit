@@ -26,7 +26,8 @@ $this->title = 'EventKit' . ' - ' . Yii::t('app', 'Backend');
                         <span class="glyphicon glyphicon-blackboard panel_dashboard_icon" aria-hidden="true"></span> 
                         <?= Yii::t('app', 'Upcoming') ?>: 
                         <?php if (Event::getUpcoming()) : ?>
-                            <?= Html::a(Event::getUpcoming()->title, ['event/view', 'id'=>Event::getUpcoming()->id]) ?>
+                            <span class="text-muted"><?= date('M j, Y H:i', strtotime(Event::getUpcoming()->starts)) ?></span>
+                            <div><?= Html::a(Event::getUpcoming()->title, ['event/view', 'id'=>Event::getUpcoming()->id]) ?></div>
                         <?php else: ?>
                             <?=  Yii::t('app', 'None') ?>
                         <?php endif; ?>
