@@ -273,12 +273,39 @@ a.desc:after {
     cursor: pointer;
 }
 
+/* -- Panels ----------------------------------- */
 .panel_dashboard_header {
     font-size: 24px;
 }
+.panel-body {
+    min-height: 120px;
+}
 .panel_dashboard_icon {
-    font-size:60px; 
+    font-size: 40px; 
     float: left; 
-    margin-right: 30px; 
+    margin-right: 14px; 
     color: #CCCCCC;
 }
+@media (max-width:767px) {
+    .panel-body {
+        min-height: inherit;
+    }
+}
+@media (min-width:1200px) {
+    .panel-body {
+        min-height: inherit;
+    }
+}
+@media (min-width:992px){
+    .panel_dashboard_icon {
+        font-size: 60px;
+    }
+}
+/* ----------------------------------- Panels -- */
+
+/*
+@media(max-width:767px){}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}
+*/
