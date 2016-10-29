@@ -82,4 +82,11 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Session::className(), ['event_id' => 'id']);
     }
+    
+    /**
+     * Returns the next upcoming event
+     */
+    public static function getUpcoming(){
+        return static::find()->where('starts >= NOW()')->one();
+    }
 }

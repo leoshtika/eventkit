@@ -24,7 +24,8 @@ $this->title = 'EventKit' . ' - ' . Yii::t('app', 'Backend');
                     </div>
                     <div class="panel-body">
                         <span class="glyphicon glyphicon-blackboard panel_dashboard_icon" aria-hidden="true"></span> 
-                        <?= Yii::t('app', 'See all the events') ?>
+                        <?= Yii::t('app', 'Upcoming') ?>: 
+                        <?= Event::getUpcoming() ? Event::getUpcoming()->title : Yii::t('app', 'None'); ?>
                     </div>
                     <div class="panel-footer text-right">
                         <?= Html::a(
