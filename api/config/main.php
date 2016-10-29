@@ -59,6 +59,9 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule', 
                     'controller' => 'question',
+                    'extraPatterns' => [
+                        'GET session/<id:\d+>' => 'session',
+                    ]
                 ],
             ],
         ],

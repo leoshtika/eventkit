@@ -52,7 +52,7 @@ class QuestionController extends Controller
      * @TODO: Change this method and the endpoint url to get the sessions from one event (using POST)
      * @return array
      */
-    public function actionIndex() 
+    public function actionSession($id) 
     {
         return Question::find()
                 ->select([
@@ -60,6 +60,7 @@ class QuestionController extends Controller
                         'question.created_at', 'question.updated_at'
                     ])
                 ->leftJoin('user', 'question.user_id = user.id')
+                ->where('question.session_id = :session', [':session' => $id])
                 ->asArray()
                 ->all();
     }
