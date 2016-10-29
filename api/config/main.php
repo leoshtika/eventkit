@@ -56,6 +56,10 @@ return [
                     'class' => 'yii\rest\UrlRule', 
                     'controller' => 'session',
                 ],
+                [
+                    'class' => 'yii\rest\UrlRule', 
+                    'controller' => 'question',
+                ],
             ],
         ],
     ],
