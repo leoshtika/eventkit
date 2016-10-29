@@ -48,8 +48,8 @@ class QuestionController extends Controller
     }
     
     /**
-     * Returns all the sessions
-     * @TODO: Change this method and the endpoint url to get the sessions from one event (using POST)
+     * Returns all questions of one session
+     * @param int $id Session id
      * @return array
      */
     public function actionSession($id) 
