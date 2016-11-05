@@ -2,11 +2,14 @@
 
 namespace api\controllers;
 
+use Yii;
 use yii\rest\Controller;
 use common\models\Question;
 use yii\filters\Cors;
 use yii\web\Response;
 use yii\filters\ContentNegotiator;
+use yii\filters\AccessControl;
+use yii\filters\auth\HttpBearerAuth;
 
 class QuestionController extends Controller
 {
@@ -28,11 +31,36 @@ class QuestionController extends Controller
                 'Access-Control-Request-Headers' => ['*'],
             ],
         ];
+        
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::className(),
+            'except' => ['options', 'index'],
+        ];
 
         $behaviors['contentNegotiator'] = [
             'class' => ContentNegotiator::className(),
             'formats' => [
                 'application/json' => Response::FORMAT_JSON,
+            ],
+        ];
+
+        $behaviors['access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'actions' => ['options'],
+                    'verbs' => ['OPTIONS'],
+                    'allow' => true,
+                ],
+                [
+                    'actions' => ['index'],
+                    'allow' => true,
+                ],
+                [
+                    'actions' => ['create'],
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
             ],
         ];
 
@@ -63,5 +91,22 @@ class QuestionController extends Controller
                 ->where('question.session_id = :session', [':session' => $id])
                 ->asArray()
                 ->all();
+    }
+    
+    /**
+     * Creates a new question
+     * @return Array message or validation errors
+     */
+    public function actionCreate()
+    {
+        $model = new Question();
+        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+        $model->user_id = Yii::$app->user->id;
+        
+        if ($model->save()){
+            return [['message' => Yii::t('app', 'Your question was sent successfully')]];
+        } else {
+            return $model;
+        }
     }
 }

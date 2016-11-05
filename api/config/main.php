@@ -61,6 +61,7 @@ return [
                     'controller' => 'question',
                     'extraPatterns' => [
                         'GET session/<id:\d+>' => 'index',
+                        'POST create' => 'create',
                     ]
                 ],
             ],
