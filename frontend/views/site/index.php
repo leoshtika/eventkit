@@ -11,9 +11,11 @@ $this->title = 'EventKit';
     <div class="jumbotron">
         <h1>Welcome to EventKit!</h1>
 
-        <p class="lead">This application is under construction.</p>
+        <p class="lead">A conference management framework</p>
+        <?= Html::a('Get started here', ['site/about'], [
+            'class' => 'btn btn-lg btn-primary',
+        ])?>
 
-        <p><a class="btn btn-lg btn-primary" href="#">Get started here</a></p>
     </div>
 
     <div class="body-content">
