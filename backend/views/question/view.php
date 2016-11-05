@@ -31,7 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'session_id',
+            [
+                'attribute' => 'session_id',
+                'value' => $model->session->title,
+            ],
             'user_id',
             'question:ntext',
             [
