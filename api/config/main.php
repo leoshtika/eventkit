@@ -60,7 +60,7 @@ return [
                     'class' => 'yii\rest\UrlRule', 
                     'controller' => 'question',
                     'extraPatterns' => [
-                        'GET session/<id:\d+>' => 'session',
+                        'GET session/<id:\d+>' => 'index',
                     ]
                 ],
             ],

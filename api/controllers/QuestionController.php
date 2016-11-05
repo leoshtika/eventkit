@@ -52,7 +52,7 @@ class QuestionController extends Controller
      * @param int $id Session id
      * @return array
      */
-    public function actionSession($id) 
+    public function actionIndex($id) 
     {
         return Question::find()
                 ->select([
