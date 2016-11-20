@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'full_name',
                 'format' => 'html', 
                 'value' => function($searchModel){
-                    return Html::img('/files4users/speakers/'.$searchModel->id.'.png', 
+                    return Html::img(Yii::$app->urlManagerFrontend->baseUrl . '/files4users/speakers/'.$searchModel->id.'.png', 
                             ['width' => '50px']).' '.$searchModel->full_name;
                 },
             ],
