@@ -14,6 +14,8 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
+            // If you don't use Vagrant or have a different path to the application, 
+            // override the 'baseUrl' property in the 'main-local.php' file.
             'baseUrl' => '',
             'csrfParam' => 'eventkit-csrf-front',
         ],

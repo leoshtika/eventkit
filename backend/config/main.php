@@ -15,6 +15,8 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
+            // If you don't use Vagrant or have a different path to the application, 
+            // override the 'baseUrl' property in the 'main-local.php' file.
             // 'admin' must match the regex string in .htaccess file in the root folder
             'baseUrl' => '/admin',
             'csrfParam' => 'eventkit-csrf-back',
