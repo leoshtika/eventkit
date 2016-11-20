@@ -13,6 +13,22 @@ return [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
         ],
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\urlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // If you don't use Vagrant or have a different path to the application, 
+            // override the 'baseUrl' property in the 'main-local.php' file.
+            'baseUrl' => '',
+        ],
+        'urlManagerBackend' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // If you don't use Vagrant or have a different path to the application, 
+            // override the 'baseUrl' property in the 'main-local.php' file.
+            'baseUrl' => '/admin',
+        ],
         'i18n' => [
             'translations' => [
                 // Translations used in all app

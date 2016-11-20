@@ -1,9 +1,5 @@
 <?php
 
-use \yii\web\Request;
-// 'admin' must match the regex string in .htaccess file in the root folder
-$baseUrl = str_replace('/backend/web', '/admin', (new Request)->getBaseUrl());
-
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -19,7 +15,8 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
-            'baseUrl' => $baseUrl,
+            // 'admin' must match the regex string in .htaccess file in the root folder
+            'baseUrl' => '/admin',
             'csrfParam' => 'eventkit-csrf-back',
         ],
         'user' => [
@@ -42,14 +39,6 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'urlManagerFrontend' => [
-            'class' => 'yii\web\urlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            // If you don't use Vagrant or have a different path to the application, 
-            // override the 'baseUrl' property in the 'main-local.php' file.
-            'baseUrl' => '/',
         ],
     ],
     'params' => $params,

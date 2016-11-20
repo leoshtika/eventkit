@@ -1,8 +1,5 @@
 <?php
 
-use \yii\web\Request;
-$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
-
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -17,7 +14,7 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
-            'baseUrl' => $baseUrl,
+            'baseUrl' => '',
             'csrfParam' => 'eventkit-csrf-front',
         ],
         'user' => [
@@ -40,22 +37,6 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'urlManagerFrontend' => [
-            'class' => 'yii\web\urlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            // If you don't use Vagrant or have a different path to the application, 
-            // override the 'baseUrl' property in the 'main-local.php' file.
-            'baseUrl' => '/',
-        ],
-        'urlManagerBackend' => [
-            'class' => 'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            // If you don't use Vagrant or have a different path to the application, 
-            // override the 'baseUrl' property in the 'main-local.php' file.
-            'baseUrl' => '/admin',
         ],
     ],
     'params' => $params,
