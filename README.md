@@ -33,7 +33,7 @@ cd /vagrant
 Now you are inside the VM and in the /vagrant folder. All the following commands will be executed from here.
 
 ### 4. Install dependencies
-If you are NOT using Vagrant make sure to install `composer global require "fxp/composer-asset-plugin:~1.1.1"` before running the following. 
+If you are NOT using Vagrant make sure to install `composer global require "fxp/composer-asset-plugin:^1.2.0"` before running the following. 
 ```
 composer install
 ``` 

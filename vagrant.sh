@@ -43,7 +43,7 @@ fi
 
 # Install 'composer-asset-plugin'
 echo "Installing Composer Asset Plugin"
-composer global require "fxp/composer-asset-plugin:~1.1.1"
+composer global require "fxp/composer-asset-plugin:^1.2.0"
 
 # Add an alias for codecept
 echo "alias codecept='php /vagrant/vendor/bin/codecept'" >> /home/vagrant/.bashrc
