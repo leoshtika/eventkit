@@ -15,7 +15,8 @@ $this->title = 'EventKit';
         <?= Html::a('Get started here', ['site/about'], [
             'class' => 'btn btn-lg btn-primary',
         ])?>
-
+        <br><br>
+        <?= Html::a('View the GitHub project', 'https://github.com/leoshtika/eventkit') ?>
     </div>
 
     <div class="body-content">
