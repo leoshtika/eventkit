@@ -45,6 +45,7 @@ a:active, a:hover {
 .jumbotron {
     text-align: center;
     background-color: transparent;
+    margin-bottom: 0;
 }
 
 .jumbotron .btn {

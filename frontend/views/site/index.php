@@ -19,9 +19,5 @@ $this->title = 'EventKit';
     </div>
     <div class="body-content text-center">
         <?= Html::img('@web/images/main.jpg') ?><br><br>
-        <p>
-        It has survived not only five centuries, but also the leap into electronic 
-        typesetting, remaining essentially unchanged. 
-        </p>
     </div>
 </div>
