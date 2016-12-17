@@ -1,6 +1,6 @@
 EventKit 
 ========
-Conference management framework
+EventKit is an open-source framework that help people organize successful conferences.
 
 
 REQUIREMENTS
